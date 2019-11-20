@@ -1,0 +1,27 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "client",
+            "image": "gokhankiziltepe/multi-client",
+            "hostName": "client",
+            "essential": "false"
+        },
+        {
+            "name": "nginx",
+            "image": "gokhankiziltepe/multi-nginx",
+            "hostName": "nginx"
+
+        },{
+            "name": "server",
+            "image": "gokhankiziltepe/multi-server",
+            "hostName": "server"
+
+        },{
+            "name": "worker",
+            "image": "gokhankiziltepe/multi-worker",
+            "hostName": "worker"
+
+        },
+    ]
+}
