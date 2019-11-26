@@ -1,27 +1,36 @@
 {
-    "AWSEBDockerrunVersion": 2,
-    "containerDefinitions": [
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "client",
+      "image": "gokhankiziltepe/multi-client",
+      "hostName": "client",
+      "essential": false
+    },
+    {
+      "name": "nginx",
+      "image": "gokhankiziltepe/multi-nginx",
+      "hostName": "nginx",
+      "essential": true
+    },
+    {
+      "name": "server",
+      "image": "gokhankiziltepe/multi-server",
+      "hostName": "api",
+      "essential": false
+    },
+    {
+      "name": "worker",
+      "image": "gokhankiziltepe/multi-worker",
+      "hostName": "worker",
+      "essential": false,
+      "portMappings": [
         {
-            "name": "client",
-            "image": "gokhankiziltepe/multi-client",
-            "hostName": "client",
-            "essential": "false"
-        },
-        {
-            "name": "nginx",
-            "image": "gokhankiziltepe/multi-nginx",
-            "hostName": "nginx"
-
-        },{
-            "name": "server",
-            "image": "gokhankiziltepe/multi-server",
-            "hostName": "server"
-
-        },{
-            "name": "worker",
-            "image": "gokhankiziltepe/multi-worker",
-            "hostName": "worker"
-
-        },
-    ]
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": ["client", "server"]
+    }
+  ]
 }
