@@ -9,8 +9,8 @@ before_install:
   - openssl aes-256-cbc -K $encrypted_998924026509_key -iv $encrypted_998924026509_iv -in service-account.json.enc -out service-account.json -d
   - curl https://sdk.cloud.google.com | bash > /dev/null;
   - source $HOME/google-cloud-sdk/path.bash.inc
-  - gloud components update kubectl
-  - gloud auth activate-service-account --key-file service-account.json
+  - gcloud components update kubectl
+  - gcloud auth activate-service-account --key-file service-account.json
   - gcloud config set project jovial-valve-260515
   - gcloud config set compute/zone us-central1-a
   - gcloud container clusters get-credentials multi-cluster
